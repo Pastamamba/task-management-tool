@@ -1,5 +1,6 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/core";
+  import { goto } from "$app/navigation";
 
   let name = $state("");
   let greetMsg = $state("");
@@ -9,6 +10,11 @@
     // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
     greetMsg = await invoke("greet", { name });
   }
+
+  function navigateToTable() {
+    goto("/table");
+  }
+
 </script>
 
 <main class="container">
@@ -32,6 +38,9 @@
     <button type="submit">Greet</button>
   </form>
   <p>{greetMsg}</p>
+
+  <h1>Login</h1>
+  <button onclick={navigateToTable}>Go to Table Page</button>
 </main>
 
 <style>
