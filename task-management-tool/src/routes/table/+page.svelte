@@ -1,5 +1,5 @@
 <script>
-    // Lista elementeistä, jotka näytetään taulukossa
+    import { Button } from "$lib/components/ui/button";
     let items = [
         { id: 1, name: "Element 1", description: "This is the first element" },
         { id: 2, name: "Element 2", description: "This is the second element" },
@@ -9,7 +9,7 @@
 
 <main class="container">
     <h1>Table Page</h1>
-
+    <Button>Click me</Button>
     <table>
         <thead>
         <tr>
