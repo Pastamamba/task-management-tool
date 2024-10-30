@@ -1,7 +1,31 @@
 import { fontFamily } from "tailwindcss/defaultTheme";
-import type { Config } from "tailwindcss";
 
-const config: Config = {
+const config: {
+	safelist: string[];
+	theme: {
+		container: { padding: string; screens: { "2xl": string }; center: boolean };
+		extend: {
+			fontFamily: { sans: string[] };
+			borderRadius: { md: string; sm: string; lg: string };
+			colors: {
+				border: string;
+				secondary: { foreground: string; DEFAULT: string };
+				input: string;
+				ring: string;
+				background: string;
+				popover: { foreground: string; DEFAULT: string };
+				foreground: string;
+				muted: { foreground: string; DEFAULT: string };
+				accent: { foreground: string; DEFAULT: string };
+				destructive: { foreground: string; DEFAULT: string };
+				card: { foreground: string; DEFAULT: string };
+				primary: { foreground: string; DEFAULT: string }
+			}
+		}
+	};
+	darkMode: string[];
+	content: string[]
+} = {
 	darkMode: ["class"],
 	content: ["./src/**/*.{html,js,svelte,ts}"],
 	safelist: ["dark"],
