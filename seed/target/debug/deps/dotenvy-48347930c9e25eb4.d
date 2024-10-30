@@ -1,0 +1,11 @@
+/home/pastamamba/task-management-tool/seed/target/debug/deps/libdotenvy-48347930c9e25eb4.rmeta: /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/lib.rs /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/errors.rs /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/find.rs /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/iter.rs /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/parse.rs
+
+/home/pastamamba/task-management-tool/seed/target/debug/deps/libdotenvy-48347930c9e25eb4.rlib: /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/lib.rs /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/errors.rs /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/find.rs /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/iter.rs /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/parse.rs
+
+/home/pastamamba/task-management-tool/seed/target/debug/deps/dotenvy-48347930c9e25eb4.d: /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/lib.rs /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/errors.rs /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/find.rs /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/iter.rs /home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/parse.rs
+
+/home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/lib.rs:
+/home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/errors.rs:
+/home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/find.rs:
+/home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/iter.rs:
+/home/pastamamba/.cargo/registry/src/index.crates.io-6f17d22bba15001f/dotenvy-0.15.7/src/parse.rs:

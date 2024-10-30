@@ -1,7 +1,7 @@
 mod schema;
 
 use diesel::prelude::*;
-use diesel::{Queryable, Insertable, Selectable};
+use diesel::{Insertable, Queryable, Selectable};
 use serde::Serialize;
 use crate::schema::tickets;
 use diesel::pg::PgConnection;
