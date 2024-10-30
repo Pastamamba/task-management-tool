@@ -1,18 +1,16 @@
-version: "3.8"
-
+version: '3.8'
 services:
   postgres:
     image: postgres:latest
-    container_name: local_postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: taskmanagementtool
     ports:
-      - "5440:5440"
+      - "5441:5441"
+    command: ["postgres", "-p", "5441"]
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
 volumes:
   postgres_data:
-    driver: local

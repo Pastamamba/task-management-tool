@@ -20,7 +20,7 @@
         </thead>
         <tbody>
         {#each items as item}
-            <tr>
+            <tr>ker
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.description}</td>
