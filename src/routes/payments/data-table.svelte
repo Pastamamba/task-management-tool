@@ -16,7 +16,7 @@
     export const tickets = writable<Ticket[]>([]);
 
     async function fetchTickets() {
-        const data: Ticket[] = await invoke("get_dummy_tickets");
+        const data: Ticket[] = await invoke("get_tickets_from_db");
         tickets.set(data);
     }
 
