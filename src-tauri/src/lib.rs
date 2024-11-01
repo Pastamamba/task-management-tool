@@ -65,12 +65,28 @@ fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
+#[tauri::command]
+fn update_ticket_status(ticket_id: i32, new_status: String) -> Ticket {
+    use crate::schema::tickets::dsl::{tickets, status, id};
+
+    let mut connection = establish_connection();
+    diesel::update(tickets.filter(id.eq(ticket_id)))
+        .set(status.eq(new_status.clone()))
+        .execute(&mut connection)
+        .expect("Error updating ticket status");
+
+    tickets
+        .filter(id.eq(ticket_id))
+        .first::<Ticket>(&mut connection)
+        .expect("Error fetching updated ticket")
+}
+
 // Tauri-sovelluksen käynnistys
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_shell::init())
-        .invoke_handler(tauri::generate_handler![greet, get_dummy_tickets, get_tickets_from_db])
+        .invoke_handler(tauri::generate_handler![greet, get_dummy_tickets, get_tickets_from_db, update_ticket_status])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
