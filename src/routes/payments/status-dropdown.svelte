@@ -2,6 +2,8 @@
     import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
     import { invoke } from "@tauri-apps/api/core";
     import { Button } from "$lib/components/ui/button";
+    import {tickets} from "@/routes/payments/ticketsStore";
+
     export let row;
 
     const statuses = ["Open", "In Progress", "Resolved", "In Testing", "Done"];

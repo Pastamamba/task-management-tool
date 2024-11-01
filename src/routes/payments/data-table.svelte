@@ -1,19 +1,11 @@
 <script lang="ts">
     import { createRender, createTable, Render, Subscribe } from "svelte-headless-table";
-    import { writable } from "svelte/store";
     import * as Table from "$lib/components/ui/table";
     import { invoke } from "@tauri-apps/api/core";
     import DataTableActions from "./data-table-actions.svelte";
     import StatusDropdown from "./status-dropdown.svelte";
-
-    type Ticket = {
-        id: string;
-        title: string;
-        status: string;
-        description: string;
-    };
-
-    export const tickets = writable<Ticket[]>([]);
+    import type {Ticket} from "@/routes/payments/ticketsStore";
+    import {tickets} from "@/routes/payments/ticketsStore";
 
     async function fetchTickets() {
         const data: Ticket[] = await invoke("get_tickets_from_db");
