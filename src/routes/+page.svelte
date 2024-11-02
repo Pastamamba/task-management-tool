@@ -19,6 +19,10 @@
     goto("/payments");
   }
 
+  function navigateToKanban() {
+    goto("/kanban");
+  }
+
 </script>
 
 <main class="container">
@@ -46,6 +50,7 @@
   <h1>Login</h1>
   <button onclick={navigateToTable}>Go to Table Page</button>
   <button onclick={navigateToPayments}>Go to payments Page</button>
+  <button onclick={navigateToKanban}>Go to Kanban Page</button>
 </main>
 
 <style>
