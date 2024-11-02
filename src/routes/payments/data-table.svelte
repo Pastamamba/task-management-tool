@@ -6,6 +6,7 @@
     import StatusDropdown from "./status-dropdown.svelte";
     import type {Ticket} from "@/routes/payments/ticketsStore";
     import {tickets} from "@/routes/payments/ticketsStore";
+    import Timers from "./DataTableActions.svelte";
 
     async function fetchTickets() {
         const data: Ticket[] = await invoke("get_tickets_from_db");
@@ -42,6 +43,13 @@
         table.column({
             accessor: "description",
             header: "Description",
+        }),
+        table.column({
+            accessor: ({ id }) => id,
+            header: "Timer",
+            cell: ({ value }) => {
+                return createRender(Timers, { id: value });
+            },
         }),
     ]);
 
