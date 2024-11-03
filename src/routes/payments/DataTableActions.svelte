@@ -27,5 +27,5 @@
 <div class="timer-controls">
     <button on:click={handleStart} disabled={$ticket?.timerRunning}>Start</button>
     <button on:click={handleStop} disabled={!$ticket?.timerRunning}>Stop</button>
-    <span>Elapsed Time: {$ticket?.elapsedTime ? formatTime($ticket.elapsedTime) : "00:00:00"}</span>
+    <span>{$ticket?.elapsedTime ? formatTime($ticket.elapsedTime) : "00:00:00"}</span>
 </div>
