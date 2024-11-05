@@ -57,6 +57,7 @@
 </script>
 
 <div class="rounded-md border">
+    <h1>Jira tickets</h1>
     <Table.Root {...$tableAttrs}>
         <Table.Header>
             {#each $headerRows as headerRow}

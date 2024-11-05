@@ -3,7 +3,7 @@
 </script>
 
 <main class="container">
-    <h1>Table Page</h1>
+    <h1>Own tickets</h1>
     <Button>Click me</Button>
 </main>
 
