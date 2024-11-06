@@ -1,92 +1,24 @@
-mod schema;
+pub mod db;
+pub mod schema;
+pub mod tickets;
 
-use diesel::prelude::*;
-use diesel::{Insertable, Queryable, Selectable};
-use serde::Serialize;
-use crate::schema::tickets;
-use diesel::pg::PgConnection;
-use std::env;
+use tickets::{get_tickets_from_db, update_ticket_status};
 
-#[derive(Serialize, Queryable, Insertable, Selectable)]
-#[table_name = "tickets"]
-#[diesel(check_for_backend(diesel::pg::Pg))]
-struct Ticket {
-    id: i32,
-    title: String,
-    status: String,
-    description: Option<String>
-}
-
-fn establish_connection() -> PgConnection {
-    dotenvy::dotenv().ok();
-    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
-    PgConnection::establish(&database_url).expect("Error connecting to database")
-}
-
-// Komento, joka hakee tiedot tietokannasta
-#[tauri::command]
-fn get_tickets_from_db() -> Vec<Ticket> {
-    use crate::schema::tickets::dsl::*;
-
-    let mut connection = establish_connection();
-    tickets
-        .load::<Ticket>(&mut connection)
-        .expect("Error loading tickets")
-}
-
-// Mock-dataa (jos haluat säilyttää get_dummy_tickets)
-#[tauri::command]
-fn get_dummy_tickets() -> Vec<Ticket> {
-    vec![
-        Ticket {
-            id: 1,
-            title: "Fix login bug".to_string(),
-            status: "In Progress".to_string(),
-            description: Option::from("User cannot login with correct credentials".to_string()),
-        },
-        Ticket {
-            id: 2,
-            title: "Update dependencies".to_string(),
-            status: "Open".to_string(),
-            description: Option::from("Update project dependencies to latest versions".to_string()),
-        },
-        Ticket {
-            id: 3,
-            title: "Add new feature X".to_string(),
-            status: "Backlog".to_string(),
-            description: Option::from("Implement feature X according to specifications".to_string()),
-        },
-    ]
-}
-
-// Tervetuloviesti-komento (jos haluat säilyttää greet-funktion)
 #[tauri::command]
 fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
-#[tauri::command]
-fn update_ticket_status(ticket_id: i32, new_status: String) -> Ticket {
-    use crate::schema::tickets::dsl::{tickets, status, id};
-
-    let mut connection = establish_connection();
-    diesel::update(tickets.filter(id.eq(ticket_id)))
-        .set(status.eq(new_status.clone()))
-        .execute(&mut connection)
-        .expect("Error updating ticket status");
-
-    tickets
-        .filter(id.eq(ticket_id))
-        .first::<Ticket>(&mut connection)
-        .expect("Error fetching updated ticket")
-}
-
-// Tauri-sovelluksen käynnistys
+// Tauri application runner
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_shell::init())
-        .invoke_handler(tauri::generate_handler![greet, get_dummy_tickets, get_tickets_from_db, update_ticket_status])
+        .invoke_handler(tauri::generate_handler![
+            greet,
+            get_tickets_from_db,
+            update_ticket_status
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

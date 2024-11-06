@@ -2,5 +2,6 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    task_management_tool_lib::run()
+    // Call the run function from your library crate
+    task_management_tool_lib::run();
 }
