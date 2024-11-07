@@ -1,7 +1,7 @@
-use diesel::prelude::*;
 use crate::db::establish_connection;
-use crate::tickets::models::Ticket;
 use crate::schema::tickets::dsl::*;
+use crate::tickets::models::Ticket;
+use diesel::prelude::*;
 
 #[tauri::command]
 pub fn get_tickets_from_db() -> Vec<Ticket> {

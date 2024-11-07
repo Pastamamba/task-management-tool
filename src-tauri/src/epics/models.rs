@@ -1,20 +1,21 @@
-use diesel::{Insertable, Queryable, Selectablem, Associations};
-use serde::{Serialize, Deserialize};
 use crate::schema::epics;
-use crate::tickets::models::Ticket;
+use diesel::{Insertable, Queryable, Selectable};
+use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Queryable, Insertable, Selectable, Associations)]
+#[derive(Serialize, Deserialize, Queryable, Insertable, Selectable)]
 #[diesel(table_name = epics)]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct Epic {
     pub id: i32,
     pub title: String,
-    pub status: String,
     pub description: Option<String>,
-    pub tickets: Vec<Ticket>,
+    pub status: String,
 }
 
-pub struct NewEpic {
-    pub title: String,
-    pub description: Option<String>,
+#[derive(Insertable)]
+#[diesel(table_name = epics)]
+pub struct NewEpic<'a> {
+    pub title: &'a str,
+    pub description: Option<&'a str>,
+    pub status: &'a str,
 }

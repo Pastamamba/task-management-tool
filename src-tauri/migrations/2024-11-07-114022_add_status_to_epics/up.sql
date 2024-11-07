@@ -1,0 +1,2 @@
+-- Your SQL goes here
+ALTER TABLE epics ADD COLUMN status VARCHAR NOT NULL DEFAULT '';
