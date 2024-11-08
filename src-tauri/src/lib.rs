@@ -4,6 +4,7 @@ mod epics;
 pub mod schema;
 mod tests;
 pub mod tickets;
+mod projects;
 
 use tickets::{get_tickets_from_db, update_ticket_status};
 
