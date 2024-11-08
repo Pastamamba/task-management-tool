@@ -27,4 +27,29 @@ mod tests {
             Ok(())
         });
     }
+
+    #[test]
+    fn test_get_epics() {
+        let connection = &mut establish_connection();
+
+        connection
+            .run_pending_migrations(MIGRATIONS)
+            .expect("Migrations failed");
+
+        connection.test_transaction::<_, (), _>(|_conn| {
+            let title = String::from("Test Epic");
+            let description = Some(String::from("This is a test epic"));
+            let epic = create_epic(title.clone(), description.clone());
+
+            let epics = crate::epics::handlers::get_epics();
+
+            let found_epic = epics.iter().find(|e| e.id == epic.id).unwrap();
+
+            assert_eq!(found_epic.title, title);
+            assert_eq!(found_epic.description, description);
+            assert_eq!(found_epic.status, "New");
+
+            Ok(())
+        });
+    }
 }

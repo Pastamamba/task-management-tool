@@ -20,3 +20,26 @@ pub fn create_epic(new_title: String, new_description: Option<String>) -> Epic {
         .get_result::<Epic>(&mut connection)
         .expect("Error saving new epic")
 }
+
+#[tauri::command]
+pub fn get_epics() -> Vec<Epic> {
+    use crate::schema::epics::dsl::*;
+
+    let mut connection = establish_connection();
+
+    epics
+        .load::<Epic>(&mut connection)
+        .expect("Error loading epics")
+}
+
+#[tauri::command]
+pub fn get_epic_by_id(epic_id: i32) -> Epic {
+    use crate::schema::epics::dsl::*;
+
+    let mut connection = establish_connection();
+
+    epics
+        .filter(id.eq(epic_id))
+        .first::<Epic>(&mut connection)
+        .expect("Error loading epic")
+}
