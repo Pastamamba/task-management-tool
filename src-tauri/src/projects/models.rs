@@ -1,6 +1,5 @@
 use diesel::{Insertable, Queryable};
 use serde::{Deserialize, Serialize};
-use crate::schema::projects;
 
 #[derive(Debug, Clone, Serialize, Deserialize, Queryable)]
 pub struct Project {
