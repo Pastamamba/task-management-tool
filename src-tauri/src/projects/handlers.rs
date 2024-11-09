@@ -1,6 +1,5 @@
 use crate::db::establish_connection;
-use crate::projects::models::Project;
-use crate::projects::models::NewProject;
+use crate::projects::models::{NewProject, Project};
 use diesel::prelude::*;
 
 #[tauri::command]

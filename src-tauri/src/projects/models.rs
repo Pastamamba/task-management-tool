@@ -1,7 +1,9 @@
-use diesel::{Insertable, Queryable};
+use diesel::{Insertable, Queryable, Selectable};
 use serde::{Deserialize, Serialize};
+use crate::schema::projects;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Queryable)]
+#[derive(Debug, Clone, Serialize, Deserialize, Queryable, Selectable)]
+#[diesel(table_name = projects)]
 pub struct Project {
     pub id: i32,
     pub title: String,
@@ -11,7 +13,7 @@ pub struct Project {
 }
 
 #[derive(Insertable)]
-#[diesel(table_name = tasks)]
+#[diesel(table_name = projects)]
 pub struct NewProject<'a> {
     pub title: &'a str,
     pub description: Option<&'a str>,
