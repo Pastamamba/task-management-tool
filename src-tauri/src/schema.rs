@@ -6,6 +6,7 @@ diesel::table! {
         title -> Varchar,
         description -> Nullable<Text>,
         status -> Varchar,
+        project_id -> Nullable<Int4>,
     }
 }
 
@@ -29,6 +30,7 @@ diesel::table! {
     }
 }
 
+diesel::joinable!(epics -> projects (project_id));
 diesel::joinable!(tickets -> epics (epic_id));
 
 diesel::allow_tables_to_appear_in_same_query!(
