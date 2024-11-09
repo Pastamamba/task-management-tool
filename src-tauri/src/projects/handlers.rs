@@ -20,3 +20,14 @@ pub fn create_project(new_title: String, new_description: Option<String>) -> Pro
         .get_result::<Project>(&mut connection)
         .expect("Error saving new project")
 }
+
+#[tauri::command]
+pub fn get_projects() -> Vec<Project> {
+    use crate::schema::projects::dsl::*;
+
+    let mut connection = establish_connection();
+
+    projects
+        .load::<Project>(&mut connection)
+        .expect("Error loading projects")
+}
