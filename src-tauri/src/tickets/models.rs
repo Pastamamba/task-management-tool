@@ -23,4 +23,5 @@ pub struct Ticket {
     pub status: String,
     pub description: Option<String>,
     pub epic_id: Option<i32>,
+    pub created_at: chrono::NaiveDateTime,
 }

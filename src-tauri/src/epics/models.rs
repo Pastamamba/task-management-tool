@@ -10,6 +10,8 @@ pub struct Epic {
     pub title: String,
     pub description: Option<String>,
     pub status: String,
+    pub project_id: Option<i32>,
+    pub created_at: chrono::NaiveDateTime,
 }
 
 #[derive(Insertable)]

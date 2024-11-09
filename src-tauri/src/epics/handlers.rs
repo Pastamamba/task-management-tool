@@ -17,6 +17,7 @@ pub fn create_epic(new_title: String, new_description: Option<String>) -> Epic {
 
     diesel::insert_into(epics)
         .values(&new_epic)
+        .returning(Epic::as_returning())
         .get_result::<Epic>(&mut connection)
         .expect("Error saving new epic")
 }
@@ -40,6 +41,7 @@ pub fn get_epic_by_id(epic_id: i32) -> Epic {
 
     epics
         .filter(id.eq(epic_id))
+        .select(Epic::as_select())
         .first::<Epic>(&mut connection)
         .expect("Error loading epic")
 }

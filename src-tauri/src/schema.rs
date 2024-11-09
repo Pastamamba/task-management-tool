@@ -7,6 +7,7 @@ diesel::table! {
         description -> Nullable<Text>,
         status -> Varchar,
         project_id -> Nullable<Int4>,
+        created_at -> Timestamp,
     }
 }
 
@@ -27,6 +28,7 @@ diesel::table! {
         status -> Varchar,
         description -> Nullable<Text>,
         epic_id -> Nullable<Int4>,
+        created_at -> Timestamp,
     }
 }
 
