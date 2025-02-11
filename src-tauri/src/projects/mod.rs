@@ -1,2 +1,2 @@
 pub(crate) mod handlers;
-mod models;
+pub(crate) mod models;

@@ -1,7 +1,8 @@
-use crate::epics::models::Epic;
 use crate::schema::tickets;
 use diesel::{Associations, Identifiable, Insertable, Queryable, Selectable};
 use serde::{Deserialize, Serialize};
+use crate::common::models::LoggedHour;
+use crate::epics::models::Epic;
 
 #[derive(
     Debug,
@@ -24,4 +25,6 @@ pub struct Ticket {
     pub description: Option<String>,
     pub epic_id: Option<i32>,
     pub created_at: chrono::NaiveDateTime,
+    pub logged_hours: Option<Vec<LoggedHour>>,
+    pub total_hours: i32,
 }

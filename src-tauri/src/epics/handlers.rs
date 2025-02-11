@@ -2,6 +2,7 @@ use crate::db::establish_connection;
 use crate::epics::models::Epic;
 use crate::epics::models::NewEpic;
 use diesel::prelude::*;
+use crate::common::models::LoggedHour;
 
 #[tauri::command]
 pub fn create_epic(new_title: String, new_description: Option<String>) -> Epic {

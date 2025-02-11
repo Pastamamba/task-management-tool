@@ -8,6 +8,8 @@ diesel::table! {
         status -> Varchar,
         project_id -> Nullable<Int4>,
         created_at -> Timestamp,
+        logged_hours -> Nullable<Jsonb>,
+        total_hours -> Nullable<Int4>,
     }
 }
 
@@ -18,6 +20,8 @@ diesel::table! {
         description -> Nullable<Text>,
         status -> Varchar,
         created_at -> Timestamp,
+        logged_hours -> Nullable<Jsonb>,
+        total_hours -> Nullable<Int4>,
     }
 }
 
@@ -29,6 +33,8 @@ diesel::table! {
         description -> Nullable<Text>,
         epic_id -> Nullable<Int4>,
         created_at -> Timestamp,
+        logged_hours -> Nullable<Jsonb>,
+        total_hours -> Nullable<Int4>,
     }
 }
 

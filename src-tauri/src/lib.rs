@@ -5,6 +5,7 @@ pub mod schema;
 mod tests;
 pub mod tickets;
 mod projects;
+mod common;
 
 use tickets::{get_tickets_from_db, update_ticket_status};
 
